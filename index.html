@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexo Systems — Assessoria de Tecnologia e Engenharia de Processos</title>
+    <meta name="description" content="Nexo Systems: assessoria especializada em engenharia de processos, automação e transformação digital para empresas B2B. Eleve a eficiência operacional do seu negócio.">
+    <meta name="keywords" content="assessoria tecnologia, engenharia de processos, automação, transformação digital, consultoria B2B, sistemas corporativos">
+    <meta name="author" content="Nexo Systems">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Nexo Systems — Assessoria de Tecnologia">
+    <meta property="og:description" content="Engenharia de processos e transformação digital para empresas que buscam eficiência operacional real.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_BR">
+
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⬡</text></svg>">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        nexo: {
+                            50:  '#f0f4f8',
+                            100: '#d9e2ec',
+                            200: '#bcccdc',
+                            300: '#9fb3c8',
+                            400: '#829ab1',
+                            500: '#627d98',
+                            600: '#486581',
+                            700: '#334e68',
+                            800: '#243b53',
+                            900: '#102a43',
+                            950: '#0a1f33',
+                        },
+                        accent: {
+                            DEFAULT: '#2563eb',
+                            light:   '#3b82f6',
+                            dark:    '#1d4ed8',
+                        },
+                        surface: {
+                            DEFAULT: '#ffffff',
+                            muted:   '#f8fafc',
+                            subtle:  '#f1f5f9',
+                        }
+                    },
+                    fontFamily: {
+                        sans:    ['Inter', 'system-ui', 'sans-serif'],
+                        display: ['Space Grotesk', 'Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-up':    'fadeUp 0.6s ease-out forwards',
+                        'fade-in':    'fadeIn 0.8s ease-out forwards',
+                        'slide-left': 'slideLeft 0.6s ease-out forwards',
+                    },
+                    keyframes: {
+                        fadeUp: {
+                            '0%':   { opacity: '0', transform: 'translateY(24px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        fadeIn: {
+                            '0%':   { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideLeft: {
+                            '0%':   { opacity: '0', transform: 'translateX(32px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' },
+                        },
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #bcccdc; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #829ab1; }
+
+        .observe-animate {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+        }
+        .observe-animate.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-line::after {
+            content: '';
+            display: block;
+            width: 48px;
+            height: 2px;
+            background: #2563eb;
+            margin-top: 16px;
+        }
+
+        .service-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(16, 42, 67, 0.08);
+        }
+
+        @keyframes subtlePulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.2); }
+            50%      { box-shadow: 0 0 0 8px rgba(37, 99, 235, 0); }
+        }
+        .cta-pulse { animation: subtlePulse 3s ease-in-out infinite; }
+
+        .modal-overlay {
+            background: rgba(10, 31, 51, 0.6);
+            backdrop-filter: blur(4px);
+        }
+    </style>
+</head>
+
+<body class="bg-surface text-nexo-800 font-sans antialiased">
+
+    <!-- NAVEGAÇÃO -->
+    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 bg-white/80 backdrop-blur-md border-b border-nexo-100/50">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="#hero" class="flex items-center gap-2 group" id="nav-logo">
+                <div class="w-9 h-9 bg-accent rounded-lg flex items-center justify-center transition-transform group-hover:scale-105">
+                    <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                    </svg>
+                </div>
+                <span class="font-display font-bold text-xl text-nexo-900 tracking-tight">
+                    Nexo<span class="text-accent">Systems</span>
+                </span>
+            </a>
+
+            <div class="hidden md:flex items-center gap-8">
+                <a href="#servicos" class="text-sm font-medium text-nexo-600 hover:text-accent transition-colors" id="nav-servicos">Serviços</a>
+                <a href="#metodo" class="text-sm font-medium text-nexo-600 hover:text-accent transition-colors" id="nav-metodo">Método</a>
+                <a href="#resultados" class="text-sm font-medium text-nexo-600 hover:text-accent transition-colors" id="nav-resultados">Resultados</a>
+                <a href="#sobre" class="text-sm font-medium text-nexo-600 hover:text-accent transition-colors" id="nav-sobre">Sobre</a>
+                <button onclick="openTriageModal()" class="bg-accent hover:bg-accent-dark text-white text-sm font-semibold px-5 py-2.5 rounded-lg transition-all hover:shadow-lg" id="nav-cta">
+                    Fale Conosco
+                </button>
+            </div>
+
+            <button onclick="toggleMobileMenu()" class="md:hidden p-2 text-nexo-700" id="mobile-menu-btn" aria-label="Menu">
+                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-nexo-100 px-6 pb-4">
+            <a href="#servicos" class="block py-3 text-sm font-medium text-nexo-700 hover:text-accent border-b border-nexo-50" onclick="closeMobileMenu()">Serviços</a>
+            <a href="#metodo" class="block py-3 text-sm font-medium text-nexo-700 hover:text-accent border-b border-nexo-50" onclick="closeMobileMenu()">Método</a>
+            <a href="#resultados" class="block py-3 text-sm font-medium text-nexo-700 hover:text-accent border-b border-nexo-50" onclick="closeMobileMenu()">Resultados</a>
+            <a href="#sobre" class="block py-3 text-sm font-medium text-nexo-700 hover:text-accent border-b border-nexo-50" onclick="closeMobileMenu()">Sobre</a>
+            <button onclick="openTriageModal(); closeMobileMenu();" class="mt-3 w-full bg-accent hover:bg-accent-dark text-white text-sm font-semibold py-2.5 rounded-lg transition-all">
+                Fale Conosco
+            </button>
+        </div>
+    </nav>
+
+
+    <!-- HERO SECTION -->
+    <section id="hero" class="min-h-screen flex items-center pt-20 bg-gradient-to-br from-surface via-surface-muted to-nexo-50">
+        <div class="max-w-6xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-12 items-center">
+            <div class="animate-fade-up">
+                <div class="inline-flex items-center gap-2 bg-accent/5 border border-accent/15 text-accent text-xs font-semibold px-3 py-1.5 rounded-full mb-6">
+                    <span class="w-1.5 h-1.5 bg-accent rounded-full animate-pulse"></span>
+                    Assessoria Especializada em Tecnologia
+                </div>
+                <h1 class="font-display text-4xl md:text-5xl lg:text-[3.4rem] font-bold text-nexo-900 leading-tight tracking-tight mb-6">
+                    Engenharia de processos que
+                    <span class="text-accent">transforma</span>
+                    operações.
+                </h1>
+                <p class="text-lg text-nexo-500 leading-relaxed mb-8 max-w-lg">
+                    Diagnosticamos gargalos, desenhamos fluxos inteligentes e implementamos soluções tecnológicas que geram eficiência mensurável para o seu negócio.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <button onclick="openTriageModal()" class="cta-pulse bg-accent hover:bg-accent-dark text-white font-semibold px-8 py-3.5 rounded-lg transition-all hover:shadow-xl text-sm" id="hero-cta">
+                        Solicitar Diagnóstico Gratuito →
+                    </button>
+                    <a href="#metodo" class="inline-flex items-center justify-center gap-2 text-nexo-600 hover:text-accent font-medium text-sm transition-colors" id="hero-metodo-link">
+                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                        Conheça nosso método
+                    </a>
+                </div>
+
+                <div class="mt-12 pt-8 border-t border-nexo-100 flex items-center gap-8">
+                    <div>
+                        <p class="font-display font-bold text-2xl text-nexo-900">120+</p>
+                        <p class="text-xs text-nexo-400 mt-0.5">Projetos entregues</p>
+                    </div>
+                    <div class="w-px h-10 bg-nexo-100"></div>
+                    <div>
+                        <p class="font-display font-bold text-2xl text-nexo-900">98%</p>
+                        <p class="text-xs text-nexo-400 mt-0.5">Satisfação de clientes</p>
+                    </div>
+                    <div class="w-px h-10 bg-nexo-100"></div>
+                    <div>
+                        <p class="font-display font-bold text-2xl text-nexo-900">8 anos</p>
+                        <p class="text-xs text-nexo-400 mt-0.5">No mercado B2B</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hidden md:flex justify-center animate-fade-in" style="animation-delay: 0.3s;">
+                <div class="relative w-full max-w-md">
+                    <div class="absolute inset-0 bg-gradient-to-br from-accent/5 to-nexo-100/30 rounded-3xl"></div>
+                    <div class="relative p-10">
+                        <svg viewBox="0 0 400 360" fill="none" class="w-full">
+                            <rect x="30" y="20" width="120" height="56" rx="12" fill="#2563eb" fill-opacity="0.08" stroke="#2563eb" stroke-width="1.5"/>
+                            <text x="90" y="52" text-anchor="middle" fill="#2563eb" font-size="13" font-family="Inter" font-weight="600">Diagnóstico</text>
+
+                            <rect x="250" y="20" width="120" height="56" rx="12" fill="#2563eb" fill-opacity="0.08" stroke="#2563eb" stroke-width="1.5"/>
+                            <text x="310" y="52" text-anchor="middle" fill="#2563eb" font-size="13" font-family="Inter" font-weight="600">Mapeamento</text>
+
+                            <rect x="140" y="140" width="120" height="56" rx="12" fill="#2563eb" fill-opacity="0.12" stroke="#2563eb" stroke-width="2"/>
+                            <text x="200" y="172" text-anchor="middle" fill="#1d4ed8" font-size="13" font-family="Inter" font-weight="700">Engenharia</text>
+
+                            <rect x="30" y="260" width="120" height="56" rx="12" fill="#2563eb" fill-opacity="0.08" stroke="#2563eb" stroke-width="1.5"/>
+                            <text x="90" y="292" text-anchor="middle" fill="#2563eb" font-size="13" font-family="Inter" font-weight="600">Automação</text>
+
+                            <rect x="250" y="260" width="120" height="56" rx="12" fill="#10b981" fill-opacity="0.1" stroke="#10b981" stroke-width="1.5"/>
+                            <text x="310" y="292" text-anchor="middle" fill="#059669" font-size="13" font-family="Inter" font-weight="600">Resultado</text>
+
+                            <path d="M90 76 L200 140" stroke="#2563eb" stroke-width="1.2" stroke-dasharray="6 4" opacity="0.4"/>
+                            <path d="M310 76 L200 140" stroke="#2563eb" stroke-width="1.2" stroke-dasharray="6 4" opacity="0.4"/>
+                            <path d="M200 196 L90 260" stroke="#2563eb" stroke-width="1.2" stroke-dasharray="6 4" opacity="0.4"/>
+                            <path d="M200 196 L310 260" stroke="#10b981" stroke-width="1.2" stroke-dasharray="6 4" opacity="0.4"/>
+
+                            <circle cx="200" cy="168" r="3" fill="#2563eb"/>
+                            <circle cx="310" cy="288" r="3" fill="#10b981"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- SERVIÇOS -->
+    <section id="servicos" class="py-24 bg-surface">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="observe-animate text-center mb-16">
+                <p class="text-accent font-semibold text-sm tracking-wide uppercase mb-3">Serviços</p>
+                <h2 class="font-display text-3xl md:text-4xl font-bold text-nexo-900 tracking-tight">
+                    Soluções sob medida para cada desafio
+                </h2>
+                <p class="text-nexo-500 mt-4 max-w-2xl mx-auto">
+                    Atuamos nas camadas estratégica, tática e operacional da tecnologia, garantindo que cada solução esteja alinhada aos objetivos do seu negócio.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="observe-animate service-card bg-surface-muted border border-nexo-100/60 rounded-2xl p-8" id="service-engenharia">
+                    <div class="w-12 h-12 bg-accent/8 rounded-xl flex items-center justify-center mb-5">
+                        <svg class="w-6 h-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-display font-bold text-lg text-nexo-900 mb-2">Engenharia de Processos</h3>
+                    <p class="text-nexo-500 text-sm leading-relaxed">
+                        Mapeamento, redesenho e otimização de processos operacionais com metodologias como BPMN, Lean e Six Sigma adaptadas ao contexto digital.
+                    </p>
+                </div>
+
+                <div class="observe-animate service-card bg-surface-muted border border-nexo-100/60 rounded-2xl p-8" id="service-automacao">
+                    <div class="w-12 h-12 bg-accent/8 rounded-xl flex items-center justify-center mb-5">
+                        <svg class="w-6 h-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-display font-bold text-lg text-nexo-900 mb-2">Automação Inteligente</h3>
+                    <p class="text-nexo-500 text-sm leading-relaxed">
+                        Implementação de RPAs, integrações via API e workflows automatizados que eliminam tarefas repetitivas e reduzem erros operacionais.
+                    </p>
+                </div>
+
+                <div class="observe-animate service-card bg-surface-muted border border-nexo-100/60 rounded-2xl p-8" id="service-dados">
+                    <div class="w-12 h-12 bg-accent/8 rounded-xl flex items-center justify-center mb-5">
+                        <svg class="w-6 h-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-display font-bold text-lg text-nexo-900 mb-2">Dados & BI</h3>
+                    <p class="text-nexo-500 text-sm leading-relaxed">
+                        Dashboards executivos, pipelines de dados e cultura data-driven para decisões baseadas em evidências e indicadores-chave de performance.
+                    </p>
+                </div>
+
+                <div class="observe-animate service-card bg-surface-muted border border-nexo-100/60 rounded-2xl p-8" id="service-sistemas">
+                    <div class="w-12 h-12 bg-accent/8 rounded-xl flex items-center justify-center mb-5">
+                        <svg class="w-6 h-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-display font-bold text-lg text-nexo-900 mb-2">Desenvolvimento de Sistemas</h3>
+                    <p class="text-nexo-500 text-sm leading-relaxed">
+                        Aplicações web e mobile sob medida, portais corporativos e integrações com ERPs e CRMs para unificar sua operação.
+                    </p>
+                </div>
+
+                <div class="observe-animate service-card bg-surface-muted border border-nexo-100/60 rounded-2xl p-8" id="service-cloud">
+                    <div class="w-12 h-12 bg-accent/8 rounded-xl flex items-center justify-center mb-5">
+                        <svg class="w-6 h-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-display font-bold text-lg text-nexo-900 mb-2">Cloud & Infraestrutura</h3>
+                    <p class="text-nexo-500 text-sm leading-relaxed">
+                        Migração para nuvem, arquitetura escalável e gestão de infraestrutura com foco em segurança, custo-benefício e alta disponibilidade.
+                    </p>
+                </div>
+
+                <div class="observe-animate service-card bg-surface-muted border border-nexo-100/60 rounded-2xl p-8" id="service-consultoria">
+                    <div class="w-12 h-12 bg-accent/8 rounded-xl flex items-center justify-center mb-5">
+                        <svg class="w-6 h-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-display font-bold text-lg text-nexo-900 mb-2">Consultoria Estratégica</h3>
+                    <p class="text-nexo-500 text-sm leading-relaxed">
+                        Roadmaps de transformação digital, assessment tecnológico e planejamento de TI alinhado à estratégia corporativa.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- MÉTODO -->
+    <section id="metodo" class="py-24 bg-surface-muted">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="observe-animate text-center mb-16">
+                <p class="text-accent font-semibold text-sm tracking-wide uppercase mb-3">Método</p>
+                <h2 class="font-display text-3xl md:text-4xl font-bold text-nexo-900 tracking-tight">
+                    Processo estruturado, resultado previsível
+                </h2>
+                <p class="text-nexo-500 mt-4 max-w-2xl mx-auto">
+                    Nossa abordagem combina rigor metodológico com agilidade operacional. Cada etapa é validada antes de avançar para a próxima.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="observe-animate text-center md:text-left" id="metodo-step-1">
+                    <div class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-accent text-white font-display font-bold text-sm mb-4">1</div>
+                    <h3 class="font-display font-bold text-nexo-900 mb-2">Imersão</h3>
+                    <p class="text-nexo-500 text-sm leading-relaxed">
+                        Entendemos a fundo a sua operação, cultura e objetivos estratégicos através de workshops e entrevistas estruturadas.
+                    </p>
+                </div>
+
+                <div class="observe-animate text-center md:text-left" id="metodo-step-2">
+                    <div class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-accent text-white font-display font-bold text-sm mb-4">2</div>
+                    <h3 class="font-display font-bold text-nexo-900 mb-2">Diagnóstico</h3>
+                    <p class="text-nexo-500 text-sm leading-relaxed">
+                        Mapeamos processos atuais, identificamos gargalos e quantificamos oportunidades de melhoria com dados concretos.
+                    </p>
+                </div>
+
+                <div class="observe-animate text-center md:text-left" id="metodo-step-3">
+                    <div class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-accent text-white font-display font-bold text-sm mb-4">3</div>
+                    <h3 class="font-display font-bold text-nexo-900 mb-2">Engenharia</h3>
+                    <p class="text-nexo-500 text-sm leading-relaxed">
+                        Redesenhamos processos, especificamos soluções técnicas e criamos o roadmap de implementação com marcos claros.
+                    </p>
+                </div>
+
+                <div class="observe-animate text-center md:text-left" id="metodo-step-4">
+                    <div class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-emerald-500 text-white font-display font-bold text-sm mb-4">4</div>
+                    <h3 class="font-display font-bold text-nexo-900 mb-2">Entrega & Suporte</h3>
+                    <p class="text-nexo-500 text-sm leading-relaxed">
+                        Implementamos, treinamos sua equipe e acompanhamos os KPIs para garantir a sustentabilidade dos resultados.
+                    </p>
+                </div>
+            </div>
+
+            <div class="hidden md:block mt-12 observe-animate">
+                <div class="relative h-1 bg-nexo-100 rounded-full max-w-4xl mx-auto">
+                    <div class="absolute left-0 top-0 h-full w-3/4 bg-gradient-to-r from-accent to-accent-light rounded-full"></div>
+                    <div class="absolute right-0 top-0 h-full w-1/4 bg-gradient-to-r from-accent-light to-emerald-400 rounded-full"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- RESULTADOS -->
+    <section id="resultados" class="py-24 bg-surface">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="observe-animate text-center mb-16">
+                <p class="text-accent font-semibold text-sm tracking-wide uppercase mb-3">Resultados</p>
+                <h2 class="font-display text-3xl md:text-4xl font-bold text-nexo-900 tracking-tight">
+                    Impacto real em números
+                </h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 mb-16">
+                <div class="observe-animate text-center p-8 rounded-2xl bg-surface-muted border border-nexo-100/60" id="result-stat-1">
+                    <p class="font-display text-4xl font-bold text-accent mb-2">40%</p>
+                    <p class="text-nexo-500 text-sm">Redução média no tempo de processos após reengenharia</p>
+                </div>
+                <div class="observe-animate text-center p-8 rounded-2xl bg-surface-muted border border-nexo-100/60" id="result-stat-2">
+                    <p class="font-display text-4xl font-bold text-accent mb-2">3.2x</p>
+                    <p class="text-nexo-500 text-sm">ROI médio nos primeiros 12 meses de implementação</p>
+                </div>
+                <div class="observe-animate text-center p-8 rounded-2xl bg-surface-muted border border-nexo-100/60" id="result-stat-3">
+                    <p class="font-display text-4xl font-bold text-accent mb-2">-65%</p>
+                    <p class="text-nexo-500 text-sm">Redução em erros operacionais com automação de workflows</p>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="observe-animate bg-surface-muted border border-nexo-100/60 rounded-2xl p-8" id="testimonial-1">
+                    <div class="flex items-center gap-1 mb-4">
+                        <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    </div>
+                    <p class="text-nexo-600 text-sm leading-relaxed italic mb-4">
+                        "A Nexo nos ajudou a enxergar ineficiências que estavam invisíveis há anos. O redesenho do nosso fluxo de aprovação reduziu o lead time em 52%. Profissionais excepcionais."
+                    </p>
+                    <div>
+                        <p class="font-semibold text-nexo-900 text-sm">Ricardo Mendes</p>
+                        <p class="text-nexo-400 text-xs">COO — TechParts Indústria</p>
+                    </div>
+                </div>
+
+                <div class="observe-animate bg-surface-muted border border-nexo-100/60 rounded-2xl p-8" id="testimonial-2">
+                    <div class="flex items-center gap-1 mb-4">
+                        <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    </div>
+                    <p class="text-nexo-600 text-sm leading-relaxed italic mb-4">
+                        "Migramos nosso legado para a nuvem com zero downtime. A Nexo entregou uma arquitetura escalável que já suportou 3x mais carga sem intervenção. Parceiro técnico de verdade."
+                    </p>
+                    <div>
+                        <p class="font-semibold text-nexo-900 text-sm">Camila Rodrigues</p>
+                        <p class="text-nexo-400 text-xs">CTO — LogiFlow Soluções</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- SOBRE -->
+    <section id="sobre" class="py-24 bg-surface-muted">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="observe-animate">
+                    <p class="text-accent font-semibold text-sm tracking-wide uppercase mb-3">Sobre a Nexo</p>
+                    <h2 class="font-display text-3xl md:text-4xl font-bold text-nexo-900 tracking-tight mb-6 section-line">
+                        Tecnologia com propósito corporativo
+                    </h2>
+                    <p class="text-nexo-500 leading-relaxed mb-4">
+                        A Nexo Systems nasceu da convicção de que tecnologia só gera valor quando alinhada à estratégia do negócio. Somos engenheiros e consultores com experiência prática em operações de empresas de médio e grande porte.
+                    </p>
+                    <p class="text-nexo-500 leading-relaxed mb-6">
+                        Nossa equipe multidisciplinar combina expertise em engenharia de software, gestão de processos e análise de dados para entregar soluções que não são apenas técnicas — são estratégicas.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="flex items-center gap-2">
+                            <svg class="w-4 h-4 text-accent flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                            <span class="text-nexo-700 text-sm">BPMN & Lean</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <svg class="w-4 h-4 text-accent flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                            <span class="text-nexo-700 text-sm">AWS & Azure</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <svg class="w-4 h-4 text-accent flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                            <span class="text-nexo-700 text-sm">Python & Node.js</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <svg class="w-4 h-4 text-accent flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                            <span class="text-nexo-700 text-sm">Power BI & Looker</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="observe-animate">
+                    <div class="bg-white rounded-2xl border border-nexo-100/60 p-8 shadow-sm">
+                        <h3 class="font-display font-bold text-nexo-900 mb-6">Nossos Princípios</h3>
+                        <div class="space-y-5">
+                            <div class="flex gap-4">
+                                <div class="w-8 h-8 bg-accent/8 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <span class="text-accent font-display font-bold text-sm">1</span>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-nexo-900 text-sm mb-1">Diagnóstico antes de solução</p>
+                                    <p class="text-nexo-400 text-xs leading-relaxed">Nunca prescrevemos tecnologia sem entender o problema raiz.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4">
+                                <div class="w-8 h-8 bg-accent/8 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <span class="text-accent font-display font-bold text-sm">2</span>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-nexo-900 text-sm mb-1">Resultados mensuráveis</p>
+                                    <p class="text-nexo-400 text-xs leading-relaxed">Cada projeto tem KPIs claros e é medido por impacto real.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4">
+                                <div class="w-8 h-8 bg-accent/8 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <span class="text-accent font-display font-bold text-sm">3</span>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-nexo-900 text-sm mb-1">Transferência de conhecimento</p>
+                                    <p class="text-nexo-400 text-xs leading-relaxed">Sua equipe é capacitada para sustentar e evoluir cada entrega.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- CTA FINAL -->
+    <section id="cta" class="py-24 bg-nexo-900">
+        <div class="max-w-3xl mx-auto px-6 text-center observe-animate">
+            <h2 class="font-display text-3xl md:text-4xl font-bold text-white tracking-tight mb-4">
+                Pronto para transformar sua operação?
+            </h2>
+            <p class="text-nexo-300 mb-8 max-w-xl mx-auto">
+                Solicite um diagnóstico gratuito e descubra como a engenharia de processos pode gerar eficiência real para o seu negócio.
+            </p>
+            <button onclick="openTriageModal()" class="cta-pulse bg-accent hover:bg-accent-light text-white font-semibold px-10 py-4 rounded-lg transition-all hover:shadow-2xl text-sm" id="cta-final-btn">
+                Iniciar Diagnóstico Gratuito →
+            </button>
+            <p class="text-nexo-500 text-xs mt-4">Resposta em até 2 horas úteis · Sem compromisso</p>
+        </div>
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer class="bg-nexo-950 py-12">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-8 items-center">
+                <div>
+                    <a href="#hero" class="flex items-center gap-2" id="footer-logo">
+                        <div class="w-8 h-8 bg-accent rounded-lg flex items-center justify-center">
+                            <svg class="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                            </svg>
+                        </div>
+                        <span class="font-display font-bold text-lg text-white tracking-tight">
+                            Nexo<span class="text-accent-light">Systems</span>
+                        </span>
+                    </a>
+                    <p class="text-nexo-400 text-xs mt-3">Assessoria de tecnologia & engenharia de processos para empresas B2B.</p>
+                </div>
+                <div class="text-center">
+                    <div class="flex justify-center gap-6">
+                        <a href="#servicos" class="text-nexo-400 hover:text-white text-xs transition-colors">Serviços</a>
+                        <a href="#metodo" class="text-nexo-400 hover:text-white text-xs transition-colors">Método</a>
+                        <a href="#resultados" class="text-nexo-400 hover:text-white text-xs transition-colors">Resultados</a>
+                        <a href="#sobre" class="text-nexo-400 hover:text-white text-xs transition-colors">Sobre</a>
+                    </div>
+                </div>
+                <div class="text-right">
+                    <p class="text-nexo-500 text-xs">&copy; 2026 Nexo Systems. Todos os direitos reservados.</p>
+                    <p class="text-nexo-600 text-xs mt-1">CNPJ: 00.000.000/0001-00</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- MODAL DE TRIAGEM B2B (WhatsApp) -->
+    <div id="triage-modal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4">
+        <div class="modal-overlay absolute inset-0" onclick="closeTriageModal()"></div>
+
+        <div class="relative bg-white rounded-2xl shadow-2xl w-full max-w-lg max-h-[90vh] overflow-y-auto">
+            <div class="sticky top-0 bg-white rounded-t-2xl border-b border-nexo-100 px-6 py-4 flex items-center justify-between z-10">
+                <div>
+                    <h3 class="font-display font-bold text-nexo-900 text-lg">Diagnóstico Rápido</h3>
+                    <p class="text-nexo-400 text-xs mt-0.5">Preencha para falar com um especialista</p>
+                </div>
+                <button onclick="closeTriageModal()" class="p-2 text-nexo-400 hover:text-nexo-700 transition-colors rounded-lg hover:bg-nexo-50" id="modal-close-btn" aria-label="Fechar">
+                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+
+            <form id="triage-form" class="px-6 py-6 space-y-5" onsubmit="handleTriageSubmit(event)">
+                <div>
+                    <label for="triage-nome" class="block text-sm font-medium text-nexo-700 mb-1.5">Nome completo *</label>
+                    <input type="text" id="triage-nome" name="nome" required placeholder="Seu nome"
+                        class="w-full px-4 py-2.5 border border-nexo-200 rounded-lg text-sm text-nexo-800 placeholder:text-nexo-300 focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent transition-all">
+                </div>
+
+                <div>
+                    <label for="triage-empresa" class="block text-sm font-medium text-nexo-700 mb-1.5">Empresa *</label>
+                    <input type="text" id="triage-empresa" name="empresa" required placeholder="Nome da empresa"
+                        class="w-full px-4 py-2.5 border border-nexo-200 rounded-lg text-sm text-nexo-800 placeholder:text-nexo-300 focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent transition-all">
+                </div>
+
+                <div>
+                    <label for="triage-cargo" class="block text-sm font-medium text-nexo-700 mb-1.5">Cargo</label>
+                    <input type="text" id="triage-cargo" name="cargo" placeholder="Ex: Diretor de Operações, CTO"
+                        class="w-full px-4 py-2.5 border border-nexo-200 rounded-lg text-sm text-nexo-800 placeholder:text-nexo-300 focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent transition-all">
+                </div>
+
+                <div>
+                    <label for="triage-segmento" class="block text-sm font-medium text-nexo-700 mb-1.5">Segmento de atuação *</label>
+                    <select id="triage-segmento" name="segmento" required
+                        class="w-full px-4 py-2.5 border border-nexo-200 rounded-lg text-sm text-nexo-800 focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent transition-all bg-white">
+                        <option value="" disabled selected>Selecione o segmento</option>
+                        <option value="Indústria">Indústria</option>
+                        <option value="Logística e Transporte">Logística e Transporte</option>
+                        <option value="Tecnologia / SaaS">Tecnologia / SaaS</option>
+                        <option value="Saúde">Saúde</option>
+                        <option value="Financeiro">Financeiro</option>
+                        <option value="Varejo">Varejo</option>
+                        <option value="Serviços Profissionais">Serviços Profissionais</option>
+                        <option value="Agronegócio">Agronegócio</option>
+                        <option value="Outro">Outro</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="triage-porte" class="block text-sm font-medium text-nexo-700 mb-1.5">Porte da empresa *</label>
+                    <select id="triage-porte" name="porte" required
+                        class="w-full px-4 py-2.5 border border-nexo-200 rounded-lg text-sm text-nexo-800 focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent transition-all bg-white">
+                        <option value="" disabled selected>Selecione o porte</option>
+                        <option value="Até 50 funcionários">Até 50 funcionários</option>
+                        <option value="50 a 200 funcionários">50 a 200 funcionários</option>
+                        <option value="200 a 1.000 funcionários">200 a 1.000 funcionários</option>
+                        <option value="Mais de 1.000 funcionários">Mais de 1.000 funcionários</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="triage-necessidade" class="block text-sm font-medium text-nexo-700 mb-1.5">Principal necessidade *</label>
+                    <select id="triage-necessidade" name="necessidade" required
+                        class="w-full px-4 py-2.5 border border-nexo-200 rounded-lg text-sm text-nexo-800 focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent transition-all bg-white">
+                        <option value="" disabled selected>O que você busca?</option>
+                        <option value="Engenharia e redesenho de processos">Engenharia e redesenho de processos</option>
+                        <option value="Automação de workflows / RPA">Automação de workflows / RPA</option>
+                        <option value="Desenvolvimento de sistemas sob medida">Desenvolvimento de sistemas sob medida</option>
+                        <option value="Migração para nuvem">Migração para nuvem</option>
+                        <option value="BI e análise de dados">BI e análise de dados</option>
+                        <option value="Consultoria estratégica de TI">Consultoria estratégica de TI</option>
+                        <option value="Outro">Outro</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="triage-descricao" class="block text-sm font-medium text-nexo-700 mb-1.5">Descreva brevemente o desafio</label>
+                    <textarea id="triage-descricao" name="descricao" rows="3" placeholder="Ex: Nosso fluxo de aprovação de compras é 100% manual e leva 5 dias..."
+                        class="w-full px-4 py-2.5 border border-nexo-200 rounded-lg text-sm text-nexo-800 placeholder:text-nexo-300 focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent transition-all resize-none"></textarea>
+                </div>
+
+                <button type="submit" class="w-full bg-accent hover:bg-accent-dark text-white font-semibold py-3 rounded-lg transition-all hover:shadow-lg text-sm flex items-center justify-center gap-2" id="modal-submit-btn">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+                        <path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.555 4.126 1.527 5.86L0 24l6.335-1.477A11.955 11.955 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818c-1.94 0-3.78-.5-5.39-1.418l-.386-.229-4.005.935.978-3.892-.251-.399A9.77 9.77 0 012.182 12c0-5.413 4.405-9.818 9.818-9.818S21.818 6.587 21.818 12 17.413 21.818 12 21.818z"/>
+                    </svg>
+                    Enviar via WhatsApp
+                </button>
+
+                <p class="text-nexo-400 text-xs text-center">
+                    Ao enviar, você será redirecionado para o WhatsApp com suas informações pré-preenchidas.
+                </p>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- SCRIPTS -->
+    <script>
+        // ============================================
+        // CONFIGURAÇÃO — Número WhatsApp da empresa
+        // Formato: código do país + DDD + número (sem espaços, hífens ou parênteses)
+        // Exemplo: 5511999999999
+        // ============================================
+        const WHATSAPP_NUMBER = '5511990065076';
+
+
+        // ============================================
+        // MENU MOBILE
+        // ============================================
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        function closeMobileMenu() {
+            document.getElementById('mobile-menu').classList.add('hidden');
+        }
+
+
+        // ============================================
+        // MODAL DE TRIAGEM
+        // ============================================
+        function openTriageModal() {
+            const modal = document.getElementById('triage-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeTriageModal() {
+            const modal = document.getElementById('triage-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = '';
+        }
+
+        // Fechar modal com ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeTriageModal();
+        });
+
+
+        // ============================================
+        // MOTOR DE TRIAGEM B2B → WhatsApp
+        // ============================================
+        function handleTriageSubmit(e) {
+            e.preventDefault();
+
+            const nome        = document.getElementById('triage-nome').value.trim();
+            const empresa     = document.getElementById('triage-empresa').value.trim();
+            const cargo       = document.getElementById('triage-cargo').value.trim();
+            const segmento    = document.getElementById('triage-segmento').value;
+            const porte       = document.getElementById('triage-porte').value;
+            const necessidade = document.getElementById('triage-necessidade').value;
+            const descricao   = document.getElementById('triage-descricao').value.trim();
+
+            // Classificação de prioridade B2B
+            let prioridade = 'Normal';
+            const portesAlta = ['200 a 1.000 funcionários', 'Mais de 1.000 funcionários'];
+            const necessidadesUrgentes = [
+                'Engenharia e redesenho de processos',
+                'Automação de workflows / RPA',
+                'Migração para nuvem'
+            ];
+
+            if (portesAlta.includes(porte) || necessidadesUrgentes.includes(necessidade)) {
+                prioridade = 'Alta';
+            }
+            if (portesAlta.includes(porte) && necessidadesUrgentes.includes(necessidade)) {
+                prioridade = 'Urgente';
+            }
+
+            // Montar mensagem estruturada
+            let mensagem = `*[Nexo Systems — Solicitação de Diagnóstico]*\n\n`;
+            mensagem += `📋 *Prioridade:* ${prioridade}\n\n`;
+            mensagem += `👤 *Nome:* ${nome}\n`;
+            mensagem += `🏢 *Empresa:* ${empresa}\n`;
+            if (cargo) mensagem += `💼 *Cargo:* ${cargo}\n`;
+            mensagem += `📌 *Segmento:* ${segmento}\n`;
+            mensagem += `📊 *Porte:* ${porte}\n`;
+            mensagem += `🎯 *Necessidade:* ${necessidade}\n`;
+            if (descricao) mensagem += `\n📝 *Descrição:*\n${descricao}\n`;
+            mensagem += `\n---\n_Enviado via Landing Page Nexo Systems_`;
+
+            // Gerar link WhatsApp
+            const encodedMsg = encodeURIComponent(mensagem);
+            const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMsg}`;
+
+            // Abrir WhatsApp em nova aba
+            window.open(whatsappUrl, '_blank');
+
+            // Fechar modal e limpar form
+            closeTriageModal();
+            document.getElementById('triage-form').reset();
+        }
+
+
+        // ============================================
+        // INTERSECTION OBSERVER — Animações ao scroll
+        // ============================================
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px 0px -60px 0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.observe-animate').forEach((el) => {
+            observer.observe(el);
+        });
+
+
+        // ============================================
+        // NAVBAR — Efeito scroll
+        // ============================================
+        const navbar = document.getElementById('navbar');
+        let lastScroll = 0;
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.scrollY;
+
+            if (currentScroll > 50) {
+                navbar.classList.add('shadow-sm');
+            } else {
+                navbar.classList.remove('shadow-sm');
+            }
+
+            lastScroll = currentScroll;
+        });
+
+
+        // ============================================
+        // SMOOTH SCROLL — Links de ancoragem
+        // ============================================
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
